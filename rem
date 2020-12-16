@@ -1,0 +1,17 @@
+#!/bin/bash
+#to remove but not remove
+if [ "$1" != "" ]; then
+	if  [ ! -d ~/Trash/ ]; then
+		mkdir ~/Trash
+		if [ "$LS_COLORS" != "$LS_COLORS:*.rem=31;1" ]; then
+			export LS_COLORS="$LS_COLORS:*.rem=31;1"
+		fi	
+	else
+		if  [ "$LS_COLORS" != "$LS_COLORS:*.rem=31;1" ]; then
+			export LS_COLORS="$LS_COLORS:*.rem=31;1"
+		fi
+		mv $1 ~/Trash/$1.rem
+	fi
+else
+	echo "REM: ERROR: NO INPUT FILES."
+fi
